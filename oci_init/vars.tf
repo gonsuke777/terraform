@@ -23,7 +23,7 @@ variable "iam_user_private_key_path" {
 
 ## OCI region (ex:ap-tokyo-1, us-phoenix-1, etc...)
 variable "region" {
-  default = "ap-tokyo-1"
+  default = "us-phoenix-1"
 }
 
 # Compartment OCID
