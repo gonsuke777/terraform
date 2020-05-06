@@ -6,25 +6,27 @@ variable "tenancy_ocid" {
   default = "ocid1.tenancy.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 }
 
-### IAM User
+### IAM User OCID
 variable "iam_user_ocid" {
   default = "ocid1.user.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 }
 
-### IAM User fingerprint
+### IAM User private key path(pair of API fingerprint)
 variable "iam_user_fingerprint" {
   default = "xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx:xx"
 }
 
 ### IAM User private key path(pair of fingerprint)
 variable "iam_user_private_key_path" {
-  default = "./config/oci-terraform.pem"
+  default = "./sshkey/oci-terraform.pem"
 }
 
+## OCI region (ex:ap-tokyo-1, us-phoenix-1, etc...)
 variable "region" {
   default = "ap-tokyo-1"
 }
 
+# Compartment OCID
 variable "compartment_ocid" {
   description = "The compartment which resources will be created"
   default     = "ocid1.compartment.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
@@ -37,7 +39,7 @@ variable "os_image_source_id" {
   default     = "ocid1.image.oc1.ap-tokyo-1.aaaaaaaapjdxul7sl5m726x46fnuinb3fisawuuo7dz5ig72bonvd3d5743a"
 }
 
-### Compute ssh key(pub format)
+### Compute ssh key path(pub format)
 variable "public_compute_ssh_key" {
   description = "Public Compute ssh key file (in pub format) path (.../.../<key_filename>)"
   default     = "./sshkey/ays-test1.pub"
