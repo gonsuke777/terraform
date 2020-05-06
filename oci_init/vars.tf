@@ -21,11 +21,6 @@ variable "iam_user_private_key_path" {
   default = "./sshkey/oci-terraform.pem"
 }
 
-variable "bucket_namespace" {
-  #from tenancy infomation in oci console at "Object Storage Settings"
-  default = "xxxxxxxxxxxx"
-}
-
 variable "region" {
   default = "ap-tokyo-1"
 }

@@ -18,12 +18,7 @@ variable "iam_user_fingerprint" {
 
 ### IAM User private key path(pair of fingerprint)
 variable "iam_user_private_key_path" {
-  default = "./sshkey/ays-test1.pem"
-}
-
-variable "bucket_namespace" {
-  #from tenancy infomation in oci console at "Object Storage Settings"
-  default = "nrp9esenpcgb"
+  default = "./config/oci-terraform.pem"
 }
 
 variable "region" {
@@ -44,12 +39,12 @@ variable "os_image_source_id" {
 
 ### Compute ssh key(pub format)
 variable "public_compute_ssh_key" {
-  description = "Public Compute ssh key file (in pub format) location in relative path (./config/<key_filename>)"
+  description = "Public Compute ssh key file (in pub format) path (.../.../<key_filename>)"
   default     = "./sshkey/ays-test1.pub"
 }
 
 variable "private_compute_ssh_key" {
-  description = "Private Compute ssh key file (in pub format) location in relative path (./config/<key_filename>)"
+  description = "Private Compute ssh key file (in pub format) path (.../.../<key_filename>)"
   default     = "./sshkey/ays-private.pub"
 }
 

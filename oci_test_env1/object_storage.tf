@@ -5,8 +5,8 @@ data oci_objectstorage_namespace export_ns {
 }
 
 resource oci_objectstorage_bucket export_OBJSTR1 {
-  access_type    = "NoPublicAccess"
-  compartment_id = "${var.compartment_ocid}"
+  access_type           = "NoPublicAccess"
+  compartment_id        = "${var.compartment_ocid}"
   name                  = "${upper(var.oci_resourcel_prefix)}-OBJSTR1"
   namespace             = "${data.oci_objectstorage_namespace.export_ns.namespace}"
   object_events_enabled = "false"

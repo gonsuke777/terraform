@@ -9,7 +9,7 @@ resource oci_core_instance export_BASTION1 {
   shape               = "VM.Standard.E2.1"
   source_details {
     source_type = "image"
-    source_id = "${var.os_image_source_id}"
+    source_id   = "${var.os_image_source_id}"
   }
   create_vnic_details {
     assign_public_ip = "true"
@@ -30,7 +30,7 @@ resource oci_core_instance export_PRVCOMP1 {
   shape               = "VM.Standard.E2.1"
   source_details {
     source_type = "image"
-    source_id = "${var.os_image_source_id}"
+    source_id   = "${var.os_image_source_id}"
   }
   create_vnic_details {
     assign_public_ip = "false"
