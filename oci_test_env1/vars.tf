@@ -62,7 +62,7 @@ variable "private_compute_ad_num" {
 }
 
 ## Resource Prefix
-variable "oci_resourcel_prefix" {
+variable "oci_resource_prefix" {
   description = "The prefix of all the resources to be created. Maximum 4 characters."
   default     = "AYS"
 }

@@ -18,13 +18,13 @@ output "services" {
 resource oci_core_vcn export_VCN1 {
   cidr_block     = "10.0.0.0/16"
   compartment_id = "${var.compartment_ocid}"
-  display_name   = "${upper(var.oci_resourcel_prefix)}-VCN1"
-  dns_label      = "${lower(var.oci_resourcel_prefix)}vcn1"
+  display_name   = "${upper(var.oci_resource_prefix)}-VCN1"
+  dns_label      = "${lower(var.oci_resource_prefix)}vcn1"
 }
 
 resource oci_core_internet_gateway export_IGW1 {
   compartment_id = "${var.compartment_ocid}"
-  display_name   = "${upper(var.oci_resourcel_prefix)}-IGW1"
+  display_name   = "${upper(var.oci_resource_prefix)}-IGW1"
   enabled        = "true"
   vcn_id         = "${oci_core_vcn.export_VCN1.id}"
 }
@@ -32,13 +32,13 @@ resource oci_core_internet_gateway export_IGW1 {
 resource oci_core_nat_gateway export_NATGW1 {
   block_traffic  = "false"
   compartment_id = "${var.compartment_ocid}"
-  display_name   = "${upper(var.oci_resourcel_prefix)}-NATGW1"
+  display_name   = "${upper(var.oci_resource_prefix)}-NATGW1"
   vcn_id         = "${oci_core_vcn.export_VCN1.id}"
 }
 
 resource oci_core_service_gateway export_SGW1 {
   compartment_id = "${var.compartment_ocid}"
-  display_name   = "${upper(var.oci_resourcel_prefix)}-SGW1"
+  display_name   = "${upper(var.oci_resource_prefix)}-SGW1"
   # Get the service id dynamically. this code from github examples.
   services {
     service_id = "${lookup(data.oci_core_services.sgw_services.services[0], "id")}"
@@ -48,7 +48,7 @@ resource oci_core_service_gateway export_SGW1 {
 
 resource oci_core_route_table export_PUB-RTTBL1 {
   compartment_id = "${var.compartment_ocid}"
-  display_name   = "${upper(var.oci_resourcel_prefix)}-PUB-RTTBL1"
+  display_name   = "${upper(var.oci_resource_prefix)}-PUB-RTTBL1"
   route_rules {
     description       = "Internet Gateway Attach to Public Subnet"
     destination       = "0.0.0.0/0"
@@ -60,7 +60,7 @@ resource oci_core_route_table export_PUB-RTTBL1 {
 
 resource oci_core_route_table export_PRV-RTTBL2 {
   compartment_id = "${var.compartment_ocid}"
-  display_name   = "${upper(var.oci_resourcel_prefix)}-PRV-RTTBL2"
+  display_name   = "${upper(var.oci_resource_prefix)}-PRV-RTTBL2"
   route_rules {
     description       = "Private to Oracle Service"
     # Get the service name dynamically. this code from github examples.
@@ -78,7 +78,7 @@ resource oci_core_route_table export_PRV-RTTBL2 {
 
 resource oci_core_security_list export_PUB-SECLST1 {
   compartment_id = "${var.compartment_ocid}"
-  display_name   = "${upper(var.oci_resourcel_prefix)}-PUB-SECLST1"
+  display_name   = "${upper(var.oci_resource_prefix)}-PUB-SECLST1"
   egress_security_rules {
     destination      = "0.0.0.0/0"
     destination_type = "CIDR_BLOCK"
@@ -100,7 +100,7 @@ resource oci_core_security_list export_PUB-SECLST1 {
 
 resource oci_core_security_list export_PRV-SECLST2 {
   compartment_id = "${var.compartment_ocid}"
-  display_name   = "${upper(var.oci_resourcel_prefix)}-PRV-SECLST2"
+  display_name   = "${upper(var.oci_resource_prefix)}-PRV-SECLST2"
   egress_security_rules {
     destination      = "0.0.0.0/0"
     destination_type = "CIDR_BLOCK"
@@ -125,8 +125,8 @@ resource oci_core_subnet export_PUB-SUBNET1 {
   #If availability_domain is not specified, it becomes a Regional Subnet.
   cidr_block                 = "10.0.0.0/24"
   compartment_id             = "${var.compartment_ocid}"
-  display_name               = "${upper(var.oci_resourcel_prefix)}-PUB-SUBNET1"
-  dns_label                  = "${lower(var.oci_resourcel_prefix)}pubsubnet1"
+  display_name               = "${upper(var.oci_resource_prefix)}-PUB-SUBNET1"
+  dns_label                  = "${lower(var.oci_resource_prefix)}pubsubnet1"
   prohibit_public_ip_on_vnic = "false"
   route_table_id             = "${oci_core_route_table.export_PUB-RTTBL1.id}"
   security_list_ids = [
@@ -140,8 +140,8 @@ resource oci_core_subnet export_PRV-SUBNET2 {
   #If availability_domain is not specified, it becomes a Regional Subnet.
   cidr_block                 = "10.0.1.0/24"
   compartment_id             = "${var.compartment_ocid}"
-  display_name               = "${upper(var.oci_resourcel_prefix)}-PRV-SUBNET2"
-  dns_label                  = "${lower(var.oci_resourcel_prefix)}prvsubnet2"
+  display_name               = "${upper(var.oci_resource_prefix)}-PRV-SUBNET2"
+  dns_label                  = "${lower(var.oci_resource_prefix)}prvsubnet2"
   prohibit_public_ip_on_vnic = "true"
   route_table_id             = "${oci_core_route_table.export_PRV-RTTBL2.id}"
   security_list_ids = [
