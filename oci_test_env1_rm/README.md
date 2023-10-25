@@ -10,11 +10,12 @@ Create the following resources.
 ```
 git clone https://github.com/gonsuke777/terraform
 ```
-Two directories are created: oci_test_env1 and oci_test_env1_rm.  
+Three directories are created: oci_init, oci_test_env1 and oci_test_env1_rm.  
 Resource Manager uses oci_test_env1_rm.  
 
 ## (2). Edit Compute public key(zzzzzzzz.pub, yyyyyyyy.pub).   
-Generate a key for compute and paste the public key into zzzzzzzz.pub and yyyyyyyy.pub. Please refer to the following OCI manual. The key file name can be changed.  
+Generate a key for compute and paste the public key into zzzzzzzz.pub and yyyyyyyy.pub.  
+Please refer to the following OCI manual. The key file name can be changed.  
   
 Creating a Key Pair  
 https://docs.oracle.com/en-us/iaas/Content/GSG/Tasks/creatingkeys.htm  
