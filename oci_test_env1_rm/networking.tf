@@ -22,6 +22,12 @@ resource oci_core_vcn export_VCN1 {
   dns_label      = "${lower(var.oci_resource_prefix)}vcn1"
 }
 
+resource oci_core_default_security_list export_DEFAULT_SECURITY_LIST1 {
+  manage_default_resource_id = oci_core_vcn.export_VCN1.default_security_list_id
+  compartment_id = "${var.compartment_ocid}"
+  display_name   = "${upper(var.oci_resource_prefix)}-DEFAULT-SECURITY-LIST1"
+}
+
 resource oci_core_internet_gateway export_IGW1 {
   compartment_id = "${var.compartment_ocid}"
   display_name   = "${upper(var.oci_resource_prefix)}-IGW1"
